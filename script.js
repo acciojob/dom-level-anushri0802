@@ -1,8 +1,13 @@
-//your JS code here. If required.
 // Function to determine the DOM level of the element
 function findDOMLevel() {
     // Get the element with id 'level'
     const element = document.getElementById('level');
+    
+    // If the element doesn't exist, return early
+    if (!element) {
+        alert("Element with id 'level' not found.");
+        return;
+    }
 
     // Initialize the level counter
     let level = 0;
@@ -18,4 +23,4 @@ function findDOMLevel() {
 }
 
 // Call the function when the page loads
-findDOMLevel();
+window.onload = findDOMLevel;
