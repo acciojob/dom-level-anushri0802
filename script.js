@@ -1,26 +1,22 @@
-// Function to determine the DOM level of the element
-function findDOMLevel() {
-    // Get the element with id 'level'
-    const element = document.getElementById('level');
-    
-    // If the element doesn't exist, return early
-    if (!element) {
+// Wait for the DOM to fully load
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the element with id "level"
+    const targetElement = document.getElementById('level');
+
+    if (!targetElement) {
         alert("Element with id 'level' not found.");
         return;
     }
 
-    // Initialize the level counter
-    let level = 0;
+    let level = 1; // Start counting from the element itself
+    let currentElement = targetElement;
 
-    // Traverse up the DOM tree and count the parent elements
-    while (element) {
+    // Traverse up through the parent nodes until reaching the <html> element
+    while (currentElement.parentElement) {
         level++;
-        element = element.parentElement; // Move to the parent element
+        currentElement = currentElement.parentElement;
     }
 
     // Display the result using alert
     alert("The level of the element is: " + level);
-}
-
-// Call the function when the page loads
-window.onload = findDOMLevel;
+});
